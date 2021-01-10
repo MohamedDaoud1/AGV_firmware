@@ -35,6 +35,28 @@ The peripherals in the system are:
 | Siren | Used as an indicator |
 | Rotating lamp | Used as an indicator |
 
+To interface properlly with all peripherals, several ports on Tiva C board were used. The following table summarizes all peripherals connected to the board and their function:
+| Port | Pin | Module | Device | Function |  
+| A | 0 | UART0 (Rx) | PC | On-board diagnostics (OBD) |
+| A | 1 | UART0 (Tx) | PC | On-board diagnostics (OBD) |
+| A | 4 | UART3 (Rx) | Raspberry Pi | Communication with raspberry pi |
+| A | 5 | UART3 (Tx) | Raspberry Pi | Communication with raspberry pi |
+| A | 6 | UART2 (Rx) | Bluetooth | Communication with BT module |
+| A | 7 | UART2 (Tx) | Bluetooth | Communication with BT module |
+| B | 0 | GPIO | Mode Switch | Manual/Autonomous driving switch |
+| B | 2 | GPIO | Lamp | Lamp control |
+| B | 3 | GPIO | Siren | Siren control |
+| C | 4 | Interrupt | Incremental Encoder 1 | Channel Z Counter |
+| C | 5 | Interrupt | Incremental Encoder 1 | Channel A Counter |
+| C | 6 | GPIO | Incremental Encoder 1 | Channel B Counter |
+| D | 0 | SPI - MISO (RX) | Absolute Encoder | SPI2  Master input slave output |
+| D | 1 | SPI - MOSI (TX) | Absolute Encoder | SPI2  Master output slave input |
+| D | 2 | SPI - SS | Absolute Encoder | SPI2 Select Slave |
+| D | 3 | SPI - CLK | Absolute Encoder | SPI2 Clock |
+| D | 4 | ADC 7 | Motor driver 1 current sensor | Reading motor driver 1 current |
+| D | 5 | ADC 6 | Motor driver 1 current sensor | Reading motor driver 2 current |
+| D | 6 | ADC 5 | Motor driver 1 current sensor | Reading motor driver 3 current |
+| D | 7 | ADC 4 | Battery volt | Reading battery voltage |
 
 
 
