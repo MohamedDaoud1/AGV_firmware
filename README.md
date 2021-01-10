@@ -76,14 +76,14 @@ To interface properlly with all peripherals, several ports on Tiva C board were 
 Main function starts by initializing all ports and timers, then it iterates in a while loop to poll two flags.
 First flag indicates that 100 milliseconds have elapsed since sending the last message, so the program creates a new message and sends it to the raspberry pi. The second flag indicates receiving a new message from raspberry pi. The following flowchart shows how main function works:
 
-<img src="photos/Flowchart.jpg" width="1200"/>
+<img src="photos/Flowchart.jpg" width="1000"/>
 
 ## General Purpose Timers (Timer0 & Timer1):
 Timer0 acts as the main clock for the program. It elapses every 100 microseconds and increments a variable indicating
 the time in hundreds of microseconds. Timer1 elapses every 100 milliseconds and its ISR updates robot speed and distance according to encoders’ readings.
 The following flowcharts show Timer0 & Timer1 ISRs:
 
-<img src="photos/interruptsTimers.jpg" width="1200"/>
+<img src="photos/interruptsTimers.jpg" width="1000"/>
 
 ## UART Communication (Port A):
 Three different UART modules are programmed to communicate with different peripherals with the maximum possible baudrate for each one.
@@ -96,8 +96,8 @@ Three different UART modules are programmed to communicate with different periph
 
 The following flowcharts show UART2 & UART3 ISRs:
 
-<img src="photos/interrupts2.jpg" width="600"/>
-<img src="photos/interrupts3.jpg" width="600"/>
+<img src="photos/interrupts2.jpg" width="500"/>
+<img src="photos/interrupts5.jpg" width="500"/>
 
 
 Clone the repo:
