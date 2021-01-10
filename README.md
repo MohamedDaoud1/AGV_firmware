@@ -59,8 +59,20 @@ To interface properlly with all peripherals, several ports on Tiva C board were 
 | D | 5 | ADC 6 | Motor driver 1 current sensor | Reading motor driver 2 current |
 | D | 6 | ADC 5 | Motor driver 1 current sensor | Reading motor driver 3 current |
 | D | 7 | ADC 4 | Battery volt | Reading battery voltage |
+| E | 5-0 | GPIO | Line Follower 1 | Measure deviation to the predefined line |
+| F | 0 | PWM01 | Motor Driver 1 | Control Motor 1 Speed |
+| F | 1 | PWM02 | Motor Driver 2 | Control Motor 2 Speed |
+| F | 2 | PWM03 | Motor Driver 3 | Control Motor 3 Speed |
+| H | 4 | Interrupt | Incremental Encoder  | Channel Z Counter |
+| H | 5 | Interrupt | Incremental Encoder  | Channel A Counter |
+| H | 6 | GPIO | Incremental Encoder 2 | Channel B Counter |
+| N | 5-0 | GPIO | Line Follower 2 | Measure deviation to the predefined line |
+| P | 1-0 | GPIO | Motor Driver 1 | Motor 1 direction control |
+| P | 3-2 | GPIO | Motor Driver 1 | Motor 2 direction control |
+| P | 5-4 | GPIO | Motor Driver 1 | Motor 3 direction control |
 
 
+## Main function:
 
 
 
