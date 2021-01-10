@@ -19,7 +19,7 @@ Robot Operating System (ROS) was used to design control and decision-making modu
 The developed ROS nodes are:
 <img src="photos/ad.png" width="1200"/>
 
-# Low-level signal conditioning
+# Low-level signal conditioning - Tiva C board
 
 Tiva C - TM4C129 board was used to interface with all peripherals of the vehicle to follow the predefined line smoothly with constant speed.
 The peripherals in the system are:
@@ -83,7 +83,7 @@ Timer0 acts as the main clock for the program. It elapses every 100 microseconds
 the time in hundreds of microseconds. Timer1 elapses every 100 milliseconds and its ISR updates robot speed and distance according to encoders’ readings.
 The following flowcharts show Timer0 & Timer1 ISRs:
 
-<img src="photos/interruptsTimers.jpg" width="1000"/>
+<img src="photos/interruptsTimers.jpg" width="600"/>
 
 ## UART Communication (Port A):
 Three different UART modules are programmed to communicate with different peripherals with the maximum possible baudrate for each one.
@@ -92,7 +92,7 @@ Three different UART modules are programmed to communicate with different periph
 
 **UART2** is used to receive Bluetooth module commands sent from a smart phone at a baudrate of 38400 bit/s. Note that the robot will respond to the sent commands only if the mode switch is on manual drive mode. It is mainly used to test robot actuators and to drive it in emergency cases or when the line is not available.
 
-**UART3** is the main communication module as it responsible of receiving and sending messages from and to raspberry pi. The developed program sends all necessary sensors readings to raspberry pi after performing the required signal processing. In return, raspberry pi responds with the proper control actions to be made based on the sensors readings. The selected baudrate for this module is 1 Mb/s. Note that this mode will be active only if the driving mode switch is on autonomous mode.
+**UART3** is the main communication module as it responsible for receiving and sending messages from and to raspberry pi. The developed program sends all necessary sensors readings to raspberry pi after performing the required signal processing. In return, raspberry pi responds with the proper control actions to be made based on the sensors readings. The selected baudrate for this module is 1 Mb/s. Note that this mode will be active only if the driving mode switch is on autonomous mode.
 
 The following flowcharts show UART2 & UART3 ISRs:
 
@@ -100,43 +100,24 @@ The following flowcharts show UART2 & UART3 ISRs:
 <img src="photos/interrupts5.jpg" width="500"/>
 
 
-Clone the repo:
-``` bash
-git clone https://git.uwaterloo.ca/magdaoud/mpc_sim.git
-```
+## Incremental Encoders interface (Port C and Port H):
+An incremental encoder provides a number of pulses in one full rotation of the encoder. The used encoders have 3 different channels A, B and Z.
+Here we use X2 decoding for the encoders as shown in the following flowchart:
+<img src="photos/interrupts1.jpg" width="500"/>
 
-We also need to install the following three packages:
+## Absolute Encoder interface, motors current and battery voltage measurements (Port D):
+Port D is responsible for reading the absolute encoder attached to the steering system. In addition, it reads the three motors current sensors battery voltage using the port ADC module.
 
-``` bash
-sudo apt-get install ros-kinetic-ros-control
-```
+## Line follower Modules (Port E and Port N):
+The vehicle is equipped with two line follower modules; each one contains five pairs of IR transmitter and receiver. Port E and Port N are configured as GPIO to read these two modules.
 
-``` bash
-sudo apt-get install ros-kinetic-ros-controllers
-```
+## Pulse Width Modulation Generation (Port F):
+The vehicle contains three DC motors; two are attached to the rear wheels while one is attached to the steering system. These motors operate at different speeds according to PWM signal generated from the microcontroller. Port F is configured to generate PWM signal with frequency of 15 kHz, which is adequate to the used motor drivers.
 
-``` bash
-sudo apt-get install ros-kinetic-gazebo-ros-control 
-```
+## Motors Direction Control (Port P): 
+Port P is configured as GPIO and it is responsible for setting the motors directions.
 
-Then, build using catkin make:
-``` bash
-catkin_make
-```
-# Running the simulation
+# Low-level signal conditioning - Atmega328
+Atmega328 is used to read the attached load cells to calculate the actual load on the vehicle, and ultrasonic sensors to detect obstacles.  It uses I2C protocol to communicate with Raspberry Pi board.
 
-To run the simulation:
-
-``` bash
-roslaunch mpc_sim Launch_Simulation.launch 
-```
-
-To change the goal pose (change x, y, & theta values)
-
-``` bash
-rostopic pub setGoal mpc_sim/Goal_Ackerman "x: 0.0
-y: 5.0
-theta: 0.0" 
-```
-
-**This work is not open for public use and is limited to WATOnomous Design Team use to participate in AutoDrive Challenge.**
+This work is part of our bachelor's thesis available at
