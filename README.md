@@ -117,7 +117,7 @@ The vehicle contains three DC motors; two are attached to the rear wheels while 
 ## Motors Direction Control (Port P): 
 Port P is configured as GPIO and it is responsible for setting the motors directions.
 
-# Low-level signal conditioning - Atmega328
-Atmega328 is used to read the attached load cells to calculate the actual load on the vehicle, and ultrasonic sensors to detect obstacles.  It uses I2C protocol to communicate with Raspberry Pi board.
+# Low-level signal conditioning - ATmega328
+ATmega328 is used to read the attached load cells to calculate the actual load on the vehicle, and ultrasonic sensors to detect obstacles.  It uses I2C protocol to communicate with Raspberry Pi board.
 
-This work is part of our bachelor's thesis available at
+This work is part of our bachelor's thesis available here(https://github.com/MohamedDaoud1/AGV_firmware/blob/master/update6.pdf)
