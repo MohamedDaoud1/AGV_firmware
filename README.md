@@ -36,7 +36,9 @@ The peripherals in the system are:
 | Rotating lamp | Used as an indicator |
 
 To interface properlly with all peripherals, several ports on Tiva C board were used. The following table summarizes all peripherals connected to the board and their function:
+
 | Port | Pin | Module | Device | Function |  
+| --- | --- | --- | --- | --- |
 | A | 0 | UART0 (Rx) | PC | On-board diagnostics (OBD) |
 | A | 1 | UART0 (Tx) | PC | On-board diagnostics (OBD) |
 | A | 4 | UART3 (Rx) | Raspberry Pi | Communication with raspberry pi |
