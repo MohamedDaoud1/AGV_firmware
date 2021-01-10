@@ -120,4 +120,4 @@ Port P is configured as GPIO and it is responsible for setting the motors direct
 # Low-level signal conditioning - ATmega328
 ATmega328 is used to read the attached load cells to calculate the actual load on the vehicle, and ultrasonic sensors to detect obstacles.  It uses I2C protocol to communicate with Raspberry Pi board.
 
-This work is part of our bachelor's thesis available here(https://github.com/MohamedDaoud1/AGV_firmware/blob/master/update6.pdf)
+This work is part of our bachelor's thesis available [here](https://github.com/MohamedDaoud1/AGV_firmware/blob/master/Autonomous%20Guided%20Carrier%20Vehicle%20-%20Full%20Thesis.pdf)
