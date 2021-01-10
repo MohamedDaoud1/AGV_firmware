@@ -73,8 +73,31 @@ To interface properlly with all peripherals, several ports on Tiva C board were 
 
 
 ## Main function:
+Main function starts by initializing all ports and timers, then it iterates in a while loop to poll two flags.
+First flag indicates that 100 milliseconds have elapsed since sending the last message, so the program creates a new message and sends it to the raspberry pi. The second flag indicates receiving a new message from raspberry pi. The following flowchart shows how main function works:
 
+<img src="photos/Flowchart.png" width="1200"/>
 
+## General Purpose Timers (Timer0 & Timer1):
+Timer0 acts as the main clock for the program. It elapses every 100 microseconds and increments a variable indicating
+the time in hundreds of microseconds. Timer1 elapses every 100 milliseconds and its ISR updates robot speed and distance according to encoders’ readings.
+The following flowcharts show Timer0 & Timer1 ISRs:
+
+<img src="photos/interruptsTimers.png" width="1200"/>
+
+## UART Communication (Port A):
+Three different UART modules are programmed to communicate with different peripherals with the maximum possible baudrate for each one.
+
+**UART0** is used to interface with PC at a baudrate of 1.5 Mb/s to debug the program and to monitor sensors readings when necessary. Note that by default while operation, this channel is not used.
+
+**UART2** is used to receive Bluetooth module commands sent from a smart phone at a baudrate of 38400 bit/s. Note that the robot will respond to the sent commands only if the mode switch is on manual drive mode. It is mainly used to test robot actuators and to drive it in emergency cases or when the line is not available.
+
+**UART3** is the main communication module as it responsible of receiving and sending messages from and to raspberry pi. The developed program sends all necessary sensors readings to raspberry pi after performing the required signal processing. In return, raspberry pi responds with the proper control actions to be made based on the sensors readings. The selected baudrate for this module is 1 Mb/s. Note that this mode will be active only if the driving mode switch is on autonomous mode.
+
+The following flowcharts show UART2 & UART3 ISRs:
+
+<img src="photos/interrupts2.png" width="600"/>
+<img src="photos/interrupts3.png" width="600"/>
 
 
 Clone the repo:
